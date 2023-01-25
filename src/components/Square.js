@@ -1,15 +1,10 @@
 import {useState } from 'react';
 
-const Square = () => {
+const Square = ({ handleClick, tile, index}) => {
 
-    const handleClick = (e) => {
-        setTile('X');
-    }
-
-    const [tile, setTile] = useState(null);
 
     return ( 
-        <button className="square" onClick={handleClick}>
+        <button className="square" onClick={()=>{handleClick(index)}}>
             {tile}
         </button>
      );
