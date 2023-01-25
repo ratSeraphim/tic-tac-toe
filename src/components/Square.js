@@ -1,4 +1,4 @@
-import {useState } from 'react';
+
 
 const Square = ({ handleClick, tile, index}) => {
 
