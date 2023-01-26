@@ -2,10 +2,10 @@
 import { useState } from 'react';
 import Square from './Square';
 
-const Board = () => {
+const Board = ({xIsNext, squareVal, onPlay}) => {
     
-    const [squareVal, setSquareVal] = useState(Array(9).fill(null)) ;
-    const [xIsNext, setXIsNext] = useState(true);
+    /*const [squareVal, setSquareVal] = useState(Array(9).fill(null)) ;*/
+    
 
     const winner = calculateWinner(squareVal);
     let status;
@@ -18,14 +18,13 @@ const Board = () => {
     function renderSquare(index) {
         
         const handleClick = (index) => {
-            console.log(index);
-            const tempArray = squareVal.slice();
+            
             if (calculateWinner(squareVal) || squareVal[index]) {
                 return;
               }
-                tempArray[index] = xIsNext ? "X" : "O";
-            setSquareVal( tempArray);
-            setXIsNext(!xIsNext); 
+            const tempArray = squareVal.slice();
+            tempArray[index] = xIsNext ? "X" : "O";
+            onPlay(tempArray);
             /*setSquareVal((prevValue)=>{return [...prevValue, prevValue[index] = "X"]})*/
         } 
         return (
